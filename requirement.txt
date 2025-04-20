@@ -1,0 +1,28 @@
+JAC blockchain: 
+-Node app 
+-Wallet
+
+Node App : 
+folders -> Blockchain,GUI,Server
+classes -> Block,Transaction,Blockchain,Server,NodeGUI
+methods -> Block : calculate_hash()
+		-> Transaction : sign_transaction(),validate()
+		-> Blockchain : connect_seed_node,request_peer_list,connect_peers,save_peers,broadcast,load_blockchain,save_blockchain,validate_chain,new_block,new_transaction,auto_mine,POW,validate_proof,load_wallets,save_wallets,calculate_from_chain,auto_detect_fork,resolve_fork
+		->NodeGUI : methods require for each page
+		-> Server : i have no idea
+Process -> start ->generate unique id for node ->generate IP address for server host-> connect to seed node -> request peers list -> connect to peers ->request blockchain data-> save data->  start server -> activate auto mining -> activate auto fork detection and apply solution
+	-> if transaction is added -> add to pending -> change balances of wallet via address -> broadcast -> after it is mined from auto mine-> add to blockchain and store  -> broadcast blockchain  
+	-> if new block is received -> check and validate -> apply changes for wallet data store in it -> apply changes to blockchain data in it
+	-> if wallet ask for balance -> give data using wallet's address -> if it is new address add to data
+Storage -> SQLite locally
+
+Wallet :
+folders -> backend,GUI
+classes -> Wallet,WalletGUI
+methods -> Wallet : generate_privatekey,generate_address,etc
+		-> WalletGUI : no idea probably required methods for each page
+Process -> start -> if create wallet -> generate new wallet contain mnemonic,private,public, and address -> ask for wallet data to node
+		 -> if import -> accept mnemonic or private key -> generate wallet and ask for data (wallet must have same address from when it is created)
+		-> create transaction -> send request to node 
+		-> must update every 1 minute if turn on or every re open wallet
+Storage -> SQLite to store wallets imported to app
