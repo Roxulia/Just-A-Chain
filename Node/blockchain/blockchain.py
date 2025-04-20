@@ -16,7 +16,7 @@ class Blockchain:
         self.chain = []
         self.current_transactions = []
         self.transaction_cache = set()
-        self.seed_node = 'www.ywangancoffee.com'
+        self.seed_node = ''
         self.nodes = set()
         self.balances = {} or self.load_balances()
         self.temp_balances = self.balances
