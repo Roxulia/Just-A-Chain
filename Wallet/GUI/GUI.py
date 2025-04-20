@@ -8,7 +8,7 @@ class WalletGUI:
     def __init__(self,root,data_path):
         self.data_path = data_path
         self.wallets = []
-        self.seednode = "www.ywangancoffee.com"
+        self.seednode = ""
         self.nodes = set()
         self.pin = ""
         self.claimed = False
